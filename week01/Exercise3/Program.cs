@@ -5,30 +5,50 @@ class Program
     static void Main(string[] args)
     {
 //        Console.WriteLine("Hello World! This is the Exercise3 Project.");
-        Random randomGenerator = new Random();
-        int magicNumber = randomGenerator.Next(1, 101);
 
-        int guess = -1;
-
-        // We could also use a do-while loop here...
-        while (guess != magicNumber)
+        string playAgain = "yes";
+        
+        while (playAgain == "yes")
         {
-            Console.Write("What is your guess? ");
-            guess = int.Parse(Console.ReadLine());
+            // Generate a random number between 1 and 100
+            Random randomGenerator = new Random();
+            int magicNumber = randomGenerator.Next(1, 101);  // 1 to 100
 
-            if (magicNumber > guess)
+            // debugging, print the magic number
+            Console.WriteLine($"(For debugging: The magic number is {magicNumber})");
+
+            int guess = 0;
+            int guessCount = 0;
+
+            Console.WriteLine("Welcome to the Guess My Number game!");
+
+            // Start the game loop
+            while (guess != magicNumber)
             {
-                Console.WriteLine("Higher");
-            }
-            else if (magicNumber < guess)
-            {
-                Console.WriteLine("Lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed it!");
+                Console.Write("What is your guess? ");
+                guess = Convert.ToInt32(Console.ReadLine());
+                guessCount++;
+
+                if (guess < magicNumber)
+                {
+                    Console.WriteLine("Higher");
+                }
+                else if (guess > magicNumber)
+                {
+                    Console.WriteLine("Lower");
+                }
+                else
+                {
+                    Console.WriteLine($"You guessed it! It took you {guessCount} guesses.");
+                }
             }
 
-        }                    
+            // Ask the user if they want to play again
+            Console.Write("Do you want to play again? (yes/no): ");
+            playAgain = Console.ReadLine().ToLower();
+        }
+        
+        Console.WriteLine("Thanks for playing!");
+
     }
 }
