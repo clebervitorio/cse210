@@ -1,44 +1,52 @@
 using System;
-using System.Collections.Generic;
 
-// this class is all about videos, keeping track of details and comments
-class Video
+public class Video
 {
-    public string Title { get; set; } // title of the video
-    public string Author { get; set; } // who uploaded this masterpiece
-    public int Length { get; set; } // length of the video in seconds
-    private List<Comment> _comments; // a list to store all comments
+    private string _title;
+    private string _author;
+    private int _length; // length in seconds
+    private List<Comment> _comments;
 
     public Video(string title, string author, int length)
     {
-        Title = title;
-        Author = author;
-        Length = length;
-        _comments = new List<Comment>(); // initializing the comment list
+        _title = title;
+        _author = author;
+        _length = length;
+        _comments = new List<Comment>();
     }
- 
-    // method to let people add their thoughts on the video
+
+    public string GetTitle()
+    {
+        return _title;
+    }
+
+    public string GetAuthor()
+    {
+        return _author;
+    }
+
     public void AddComment(Comment comment)
     {
         _comments.Add(comment);
     }
 
-    // get the total number of comments
-    public int GetCommentCount()
+    public int CountComments()
     {
         return _comments.Count;
     }
 
-    // display video details and all the comments it got
-    public void Display()
+    public void DisplayVideoDetails()
     {
-        Console.WriteLine($"Title: {Title}\nAuthor: {Author}\nLength: {Length} seconds");
-        Console.WriteLine($"Number of Comments: {GetCommentCount()}");
-        Console.WriteLine("Comments:");
-        foreach (var comment in _comments)
+        Console.WriteLine($"Title: {GetTitle()}");
+        Console.WriteLine($"Author: {GetAuthor()}");
+        Console.WriteLine($"Length: {_length / 60}m {_length % 60}s");
+        Console.WriteLine($"Number of Comments: {CountComments()}");
+
+        foreach (Comment comment in _comments)
         {
-            Console.WriteLine($"- {comment.Name}: {comment.Text}");
+            Console.WriteLine($"{comment.GetName()}: \"{comment.GetText()}\"");
         }
+
         Console.WriteLine("---------------------------------------");
     }
 }

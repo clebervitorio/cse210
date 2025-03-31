@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 
 // this is where everything comes together
-class Program
+public class Program
 {
-static void Main(string[] args)
-{
+    public static void Main(string[] args)
+    {
         // Initial Title about program
         Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
 
@@ -41,7 +41,7 @@ static void Main(string[] args)
         // looping through and displaying everything
         foreach (var video in videos)
         {
-            video.Display();
+            video.DisplayVideoDetails();
         }
-}
+    }
 }

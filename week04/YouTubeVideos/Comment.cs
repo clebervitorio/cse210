@@ -1,14 +1,21 @@
-using System;
-
-// this class represents a comment on a video
-// it just holds the name of the person who commented and the actual comment text
-class Comment
+public class Comment
 {
-    public string Name { get; set; } // name of the commenter
-    public string Text { get; set; } // comment text
+    private string _name;
+    private string _text;
+
     public Comment(string name, string text)
     {
-        Name = name;
-        Text = text;
+        _name = name;
+        _text = text;
+    }
+
+    public string GetName()
+    {
+        return _name;
+    }
+
+    public string GetText()
+    {
+        return _text;
     }
 }

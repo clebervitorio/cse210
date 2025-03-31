@@ -1,26 +1,32 @@
-using System;
-
-// represents a customer placing an order
+// The Customer class represents a customer, containing a name and an address.
+// It provides methods to determine if the customer lives in the USA and to generate a shipping label.
 public class Customer
 {
-    private string _name;
-    private Address _address;
+    private string _name; // Customer name
+    private Address _address; // Customer address (stored as an Address object)
 
+    // Constructor initializes the customer with a name and address
     public Customer(string name, Address address)
     {
         _name = name;
         _address = address;
     }
 
-    // asks the address object if this customer is in the usa
-    public bool IsInUSA()
+    // Returns the customer's name
+    public string GetName()
     {
-        return _address.IsInUSA();
+        return _name;
     }
 
-    // returns a shipping label with the customer's name and full address
+    // Determines if the customer lives in the USA
+    public bool LivesInUSA()
+    {
+        return _address.IsInUSA(); // Calls the IsInUSA() method from the Address class
+    }
+
+    // Generates and returns a shipping label containing the customer's details
     public string GetShippingLabel()
     {
-        return $"{_name}\n{_address.GetFullAddress()}";
+        return $"Customer: {_name}\n{_address.GetFullAddress()}"; // Format the shipping label
     }
 }
