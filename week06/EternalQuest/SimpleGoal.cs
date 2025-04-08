@@ -41,3 +41,4 @@ public class SimpleGoal : Goal
         return $"{_type}:{_shortName},{_description},{_points},{_isComplete}";
     }
 }
+
